@@ -1,8 +1,8 @@
-import json, pathlib, sys
+import pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path[:0] = [str(ROOT / "service"), str(ROOT / "worker")]
 from validation import validate, extract_json_line
-from clean import clean, classify
+from clean import clean
 from worker import shard_lines
 
 GOOD = '{"intent": "weather_query", "date": null, "time": null, "place": "london"}'

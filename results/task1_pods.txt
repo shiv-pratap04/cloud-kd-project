@@ -1,0 +1,5 @@
+NAME                        READY   STATUS    RESTARTS   AGE   IP           NODE                    NOMINATED NODE   READINESS GATES
+teacher-labelling-0-fztw6   1/1     Running   0          2m    10.42.0.14   k3d-cloudlab-server-0   <none>           <none>
+teacher-labelling-1-5cvbq   1/1     Running   0          2m    10.42.0.15   k3d-cloudlab-server-0   <none>           <none>
+teacher-labelling-0-fztw6  index=0
+teacher-labelling-1-5cvbq  index=1

@@ -8,7 +8,11 @@ c, *a = sys.argv[1:]
 if c == "mkbuckets":
     for b in ("datasets", "models"):
         try: s3.create_bucket(Bucket=b)
-        except s3.exceptions.BucketAlreadyOwnedByYou: pass
+        except Exception as e: print('bucket', b, '->', type(e).__name__)
+elif c == "ls":
+    for b in s3.list_buckets()["Buckets"]:
+        print("bucket:", b["Name"])
+        for o in s3.list_objects_v2(Bucket=b["Name"]).get("Contents", []): print("   ", o["Key"], o["Size"])
 elif c == "put": s3.upload_file(a[2], a[0], a[1])
 elif c == "get": s3.download_file(a[0], a[1], a[2])
 elif c == "putdir":

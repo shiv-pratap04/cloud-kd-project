@@ -7,7 +7,7 @@ import threading
 from urllib.parse import urlparse
 
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse, Response
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from validation import extract_json_line, validate
