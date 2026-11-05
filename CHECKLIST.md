@@ -1,0 +1,11 @@
+# Submission checklist (7 Nov, 11 AM, hard deadline)
+- [ ] Task 1 run: labelling finished, shards in object storage, clean.py counts + train.sha256 recorded
+- [ ] data/train.jsonl copied from datasets/v1 (needed for make train)
+- [ ] make train SUBSET=50 works; make train (v1); v2 trained; both published (Release + bucket); model.sha256 matches the Release asset
+- [ ] results/: teacher, base, student predictions + score JSON (teacher_validation.json); loss.csv
+- [ ] Task 3: image <= 2 GB, 50-request test at 1 CPU / 1 GiB, peak memory evidence
+- [ ] Task 4: each experiment's command output saved in results/; Locust CSV + headers JSON
+- [ ] Task 6: CI green on release model; one failed run with model=base (link in report); gitleaks clean
+- [ ] Fill every [FILL] in report/report.md, export report/report.pdf (<= 8 pages), delete report_draft.pdf
+- [ ] Handwritten 3-page reflection (own words, repo link, name, roll number) scanned as <roll_number>.pdf
+- [ ] README.md has repo link; `git tag final`; zip everything as <roll_number>.zip

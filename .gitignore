@@ -1,0 +1,9 @@
+.env
+build/
+__pycache__/
+*.pyc
+*.safetensors
+*.bin
+.venv/
+project_scaffold.zip
+project_scaffold.zip

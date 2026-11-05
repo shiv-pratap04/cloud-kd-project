@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pydantic==2.9.2
+boto3==1.35.20
+transformers==4.44.2
+numpy==1.26.4

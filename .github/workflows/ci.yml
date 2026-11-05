@@ -1,0 +1,54 @@
+name: ci
+on:
+  push: {branches: [main]}
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "release = trained student (v1); base = untrained Pythia-70M (to demo the failing gate)"
+        default: release
+env:
+  RELEASE_TAG: v1
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install ruff==0.6.9 && ruff check .
+  unit-tests:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pytest==8.3.3 && python -m pytest -q tests
+  evaluate:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install transformers==4.44.2 numpy==1.26.4
+      - name: Fetch model
+        run: |
+          mkdir -p build/model
+          if [ "${{ github.event.inputs.model }}" = "base" ]; then
+            echo "MODEL_SRC=EleutherAI/pythia-70m" >> $GITHUB_ENV
+          else
+            curl -fsSL -o build/m.tar.gz "https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/model_${RELEASE_TAG}.tar.gz"
+            tar -xzf build/m.tar.gz -C build/model
+            echo "MODEL_SRC=build/model" >> $GITHUB_ENV
+          fi
+      - run: python scripts/predict.py hf "$MODEL_SRC" build/predictions.jsonl
+      - run: python tools/score.py build/predictions.jsonl data/validation.jsonl --out build/report.json
+      - uses: actions/upload-artifact@v4
+        with: {name: eval, path: build/}
+      - name: Quality gate
+        run: python tools/score.py build/predictions.jsonl data/validation.jsonl --min-validity 95
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: gitleaks/gitleaks-action@v2
+        env: {GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"}
