@@ -1,0 +1,16 @@
+# Everything `make train` needs. Edit versions to match `pip freeze` on your machine.
+seed: 42
+learning_rate: 5.0e-5
+batch_size: 8
+epochs: 3
+max_seq_length: 128
+base_model: EleutherAI/pythia-70m
+train_file: data/train.jsonl      # first max_examples records of datasets/v1/train.jsonl
+max_examples: 1500
+output_dir: build/model_v1
+loss_csv: training/loss.csv
+library_versions:
+  torch: 2.4.1
+  transformers: 4.44.2
+  pyyaml: 6.0.2
+  numpy: 1.26.4
