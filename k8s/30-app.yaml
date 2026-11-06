@@ -8,6 +8,7 @@ spec:
   template:
     metadata: {labels: {app: parser}}
     spec:
+      terminationGracePeriodSeconds: 45
       containers:
         - name: parser
           image: parser-service:1
@@ -20,6 +21,9 @@ spec:
             - {name: MAX_NEW_TOKENS, value: "80"}
             - {name: FAULT_INJECT, value: "0"}
           envFrom: [{secretRef: {name: s3-credentials}}]
+          lifecycle:
+            preStop:
+              exec: {command: ["sleep", "15"]}
           resources:
             requests: {cpu: 500m, memory: 512Mi}
             limits:   {cpu: "1",  memory: 1Gi}

@@ -1,1 +1,1 @@
-requests 1155 | failures 13 | failure rate 1.13% | median 870 ms | p95 1400 ms
+requests 1828 | failures 1 | failure rate 0.05% | median 900 ms | p95 1400 ms

@@ -1,4 +1,2 @@
 Method,Name,Error,Occurrences
-POST,/parse,CatchResponseError('HTTP 502'),10
 POST,/parse,CatchResponseError('HTTP 500'),1
-POST,/parse,CatchResponseError('HTTP 0'),2
