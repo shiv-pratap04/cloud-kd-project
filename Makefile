@@ -1,4 +1,4 @@
-GH_REPO ?= YOUR_GH_USER/YOUR_REPO
+GH_REPO ?= shiv-pratap04/cloud-kd-project
 SUBSET  ?= 0
 export GH_REPO
 
