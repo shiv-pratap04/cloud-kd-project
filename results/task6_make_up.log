@@ -1,0 +1,159 @@
+k3d cluster create --config cluster/k3d.yaml || true
+[36mINFO[0m[0000] Using config file cluster/k3d.yaml (k3d.io/v1alpha5#simple) 
+[36mINFO[0m[0000] portmapping '8080:80' targets the loadbalancer: defaulting to [servers:*:proxy agents:*:proxy] 
+[36mINFO[0m[0000] Prep: Network                                
+[36mINFO[0m[0000] Created network 'k3d-cloudlab'               
+[36mINFO[0m[0000] Created image volume k3d-cloudlab-images     
+[36mINFO[0m[0000] Starting new tools node...                   
+[36mINFO[0m[0000] Starting node 'k3d-cloudlab-tools'           
+[36mINFO[0m[0001] Creating node 'k3d-cloudlab-server-0'        
+[36mINFO[0m[0001] Creating LoadBalancer 'k3d-cloudlab-serverlb' 
+[36mINFO[0m[0001] Using the k3d-tools node to gather environment information 
+[36mINFO[0m[0001] HostIP: using network gateway 172.20.0.1 address 
+[36mINFO[0m[0001] Starting cluster 'cloudlab'                  
+[36mINFO[0m[0001] Starting servers...                          
+[36mINFO[0m[0001] Starting node 'k3d-cloudlab-server-0'        
+[36mINFO[0m[0006] All agents already running.                  
+[36mINFO[0m[0006] Starting helpers...                          
+[36mINFO[0m[0007] Starting node 'k3d-cloudlab-serverlb'        
+[36mINFO[0m[0013] Injecting records for hostAliases (incl. host.k3d.internal) and for 2 network members into CoreDNS configmap... 
+[36mINFO[0m[0015] Cluster 'cloudlab' created successfully!     
+[36mINFO[0m[0015] You can now use it like this:                
+kubectl cluster-info
+scripts/secrets.sh
+namespace/data created
+namespace/pipeline created
+namespace/app created
+secret/seaweed-s3-config created
+secret/s3-credentials created
+secret/s3-credentials created
+kubectl apply -f k8s/10-seaweedfs.yaml
+persistentvolumeclaim/seaweed-data created
+deployment.apps/seaweedfs created
+service/seaweedfs created
+kubectl -n data rollout status deploy/seaweedfs --timeout=900s
+Waiting for deployment "seaweedfs" rollout to finish: 0 of 1 updated replicas are available...
+deployment "seaweedfs" successfully rolled out
+scripts/with_s3.sh python scripts/s3tool.py mkbuckets
+scripts/with_s3.sh python scripts/s3tool.py put datasets commands_pool.jsonl data/commands_pool.jsonl
+scripts/seed_models.sh
+model_v1.tar.gz: OK
+model_v2.tar.gz: OK
+make deploy
+make[1]: Entering directory '/home/shiv/fresh-test'
+docker build -f service/Dockerfile -t parser-service:1 .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 460B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 2.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.11-slim@sha256:65bd3d9f1d7fa268dd1909973ba7eb4bdf41f6dcf2cfbe76ba9528b170f3fd79
+#4 resolve docker.io/library/python:3.11-slim@sha256:65bd3d9f1d7fa268dd1909973ba7eb4bdf41f6dcf2cfbe76ba9528b170f3fd79 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.32kB done
+#5 DONE 0.0s
+
+#6 [3/6] RUN pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+#6 CACHED
+
+#7 [4/6] COPY service/requirements.txt .
+#7 CACHED
+
+#8 [5/6] RUN pip install -r requirements.txt
+#8 CACHED
+
+#9 [2/6] WORKDIR /app
+#9 CACHED
+
+#10 [6/6] COPY service/app.py service/validation.py ./
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:e6494f71dc12c6c6ac949655e8bae0300c1d7873f0d36bcb385189ec5922f925 done
+#11 exporting config sha256:dfeab1093a3de631a547023d7e6c685493000abdfdc3ad4c90bfe8f792f36a53 done
+#11 exporting attestation manifest sha256:b0bf38b93b2f2cd97f3319987facfcd7c2a6ac71cb89159128dff2836d0eee5e 0.0s done
+#11 exporting manifest list sha256:9f60f168879d0e7252d6abd7c8a1224505d7465be81a76c2b672f6080753026a
+#11 exporting manifest list sha256:9f60f168879d0e7252d6abd7c8a1224505d7465be81a76c2b672f6080753026a 0.0s done
+#11 naming to docker.io/library/parser-service:1 0.0s done
+#11 unpacking to docker.io/library/parser-service:1 done
+#11 DONE 0.1s
+docker build -f worker/Dockerfile -t teacher-worker:1 .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 227B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 0.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 8.68kB done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/python:3.11-slim@sha256:65bd3d9f1d7fa268dd1909973ba7eb4bdf41f6dcf2cfbe76ba9528b170f3fd79
+#5 resolve docker.io/library/python:3.11-slim@sha256:65bd3d9f1d7fa268dd1909973ba7eb4bdf41f6dcf2cfbe76ba9528b170f3fd79 0.0s done
+#5 DONE 0.0s
+
+#6 [4/5] COPY worker/*.py /app/
+#6 CACHED
+
+#7 [2/5] RUN pip install --no-cache-dir boto3==1.35.20
+#7 CACHED
+
+#8 [3/5] WORKDIR /app
+#8 CACHED
+
+#9 [5/5] COPY prompts/teacher_prompt.txt /app/teacher_prompt.txt
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:fd0e60a6b1c192696524283990d30e6854cbb4f9e0a572e9c3aaa9b27d77787f done
+#10 exporting config sha256:3a8be2e79882e2e8339ae498fb8f0ee2de12a3828df77b3313318acfd69a0153 done
+#10 exporting attestation manifest sha256:3c45b55c78aaf85210fd071d30bcfac755fedd9f16d6deb39de5312757a0d042 0.0s done
+#10 exporting manifest list sha256:9a19497d080529856c7458d550e6d69ee340fd6784681387ae0ccb722e6d5874 0.0s done
+#10 naming to docker.io/library/teacher-worker:1 done
+#10 unpacking to docker.io/library/teacher-worker:1 done
+#10 DONE 0.1s
+k3d image import parser-service:1 teacher-worker:1 -c cloudlab
+[36mINFO[0m[0000] Importing image(s) into cluster 'cloudlab'   
+[36mINFO[0m[0000] Starting new tools node...                   
+[36mINFO[0m[0000] Starting node 'k3d-cloudlab-tools'           
+[36mINFO[0m[0000] Saving 2 image(s) from runtime...            
+[36mINFO[0m[0009] Importing images into nodes...               
+[36mINFO[0m[0009] Importing images from tarball '/k3d/images/k3d-cloudlab-images-20261106080434.tar' into node 'k3d-cloudlab-server-0'... 
+[36mINFO[0m[0026] Removing the tarball(s) from image volume... 
+[36mINFO[0m[0027] Removing k3d-tools node...                   
+[36mINFO[0m[0027] Successfully imported image(s)               
+[36mINFO[0m[0027] Successfully imported 2 image(s) into 1 cluster(s) 
+kubectl apply -f k8s/30-app.yaml
+deployment.apps/parser created
+service/parser created
+ingress.networking.k8s.io/parser created
+horizontalpodautoscaler.autoscaling/parser created
+kubectl -n app rollout status deploy/parser --timeout=900s
+Waiting for deployment "parser" rollout to finish: 0 out of 2 new replicas have been updated...
+Waiting for deployment "parser" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "parser" rollout to finish: 1 of 2 updated replicas are available...
+deployment "parser" successfully rolled out
+make[1]: Leaving directory '/home/shiv/fresh-test'
+
+real	12m9.324s
+user	0m9.791s
+sys	0m11.785s
