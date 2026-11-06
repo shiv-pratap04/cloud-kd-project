@@ -1,0 +1,21 @@
+== before
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/parser-8d6dd8875-dmxxv   1/1     Running   0          3m59s
+pod/parser-8d6dd8875-r5mqf   1/1     Running   0          3m59s
+
+NAME                                         REFERENCE           TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/parser   Deployment/parser   cpu: 0%/70%   1         2         2          4m
+== kubectl top pods at 60s
+NAME                     CPU(cores)   MEMORY(bytes)   
+parser-8d6dd8875-dmxxv   966m         628Mi           
+parser-8d6dd8875-r5mqf   969m         652Mi           
+== hpa at 60s
+NAME     REFERENCE           TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+parser   Deployment/parser   cpu: 210%/70%   1         2         2          4m58s
+== after
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/parser-8d6dd8875-dmxxv   1/1     Running   0          5m56s
+pod/parser-8d6dd8875-r5mqf   1/1     Running   0          5m56s
+
+NAME                                         REFERENCE           TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/parser   Deployment/parser   cpu: 204%/70%   1         2         2          5m57s
