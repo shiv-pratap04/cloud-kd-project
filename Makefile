@@ -8,7 +8,7 @@ up:
 	k3d cluster create --config cluster/k3d.yaml || true
 	scripts/secrets.sh
 	kubectl apply -f k8s/10-seaweedfs.yaml
-	kubectl -n data rollout status deploy/seaweedfs --timeout=180s
+	kubectl -n data rollout status deploy/seaweedfs --timeout=900s
 	scripts/with_s3.sh python scripts/s3tool.py mkbuckets
 	scripts/with_s3.sh python scripts/s3tool.py put datasets commands_pool.jsonl data/commands_pool.jsonl
 	scripts/seed_models.sh
@@ -21,7 +21,7 @@ images:
 
 deploy: images
 	kubectl apply -f k8s/30-app.yaml
-	kubectl -n app rollout status deploy/parser --timeout=300s
+	kubectl -n app rollout status deploy/parser --timeout=900s
 
 teacher:   ## Task 1 (Ollama must be running on the host with phi3.5 pulled)
 	kubectl apply -f k8s/20-teacher-job.yaml
