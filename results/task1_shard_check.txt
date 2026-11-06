@@ -1,0 +1,5 @@
+pool 3000 | shard-0 1500 | shard-1 1500
+overlap between shards: 0
+missing from shards: 0
+repeats inside a shard: 0
+OK

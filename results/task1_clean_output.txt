@@ -1,0 +1,10 @@
+{
+  "input": 3000,
+  "a": 0,
+  "b": 3,
+  "c": 5,
+  "d": 294,
+  "duplicates": 43,
+  "kept": 2655
+}
+sha256 c90f3acec7ca31ecf05a1c38a16a1ba8f84147b27c0b9f3b3a6d698d83429019
