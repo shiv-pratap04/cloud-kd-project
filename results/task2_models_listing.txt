@@ -1,0 +1,30 @@
+bucket: datasets
+    commands_pool.jsonl 197541
+    teacher/shard-0.jsonl 263500
+    teacher/shard-1.jsonl 263510
+    v1/train.jsonl 466913
+    v1/train.sha256 78
+bucket: models
+    smoke/VERSION.json 215
+    smoke/config.json 743
+    smoke/generation_config.json 111
+    smoke/model.safetensors 281715176
+    smoke/special_tokens_map.json 473
+    smoke/tokenizer.json 2114042
+    smoke/tokenizer_config.json 4845
+    v1/VERSION.json 217
+    v1/config.json 743
+    v1/generation_config.json 111
+    v1/model.safetensors 281715176
+    v1/model.sha256 82
+    v1/special_tokens_map.json 473
+    v1/tokenizer.json 2114042
+    v1/tokenizer_config.json 4845
+    v2/VERSION.json 216
+    v2/config.json 743
+    v2/generation_config.json 111
+    v2/model.safetensors 281715176
+    v2/model.sha256 82
+    v2/special_tokens_map.json 473
+    v2/tokenizer.json 2114042
+    v2/tokenizer_config.json 4845

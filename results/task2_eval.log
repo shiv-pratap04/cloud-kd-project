@@ -1,0 +1,6 @@
+nohup: ignoring input
+wrote results/teacher_predictions.jsonl 100
+/home/shiv/cloud-project/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+wrote results/base_predictions.jsonl 100
+wrote results/student_predictions.jsonl 100
