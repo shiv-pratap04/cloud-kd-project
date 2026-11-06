@@ -1,0 +1,4 @@
+Passing run (all stages green, release v1 model):
+https://github.com/shiv-pratap04/cloud-kd-project/actions/runs/42182377902
+Failing run (untrained Pythia-70M, quality gate fails):
+https://github.com/shiv-pratap04/cloud-kd-project/actions/runs/42182679773
