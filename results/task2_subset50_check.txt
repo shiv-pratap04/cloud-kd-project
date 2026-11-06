@@ -1,0 +1,5 @@
+training on 50 records, 3 epochs, seed 42
+epoch 1: mean loss 1.1819
+epoch 2: mean loss 0.2825
+epoch 3: mean loss 0.1627
+saved build/model_v1
