@@ -1,1 +1,15 @@
 07:33:07 start: 1 ready pods
+07:33:52 DELETE pod/parser-648bcc7558-cpzn2
+pod "parser-648bcc7558-cpzn2" deleted from app namespace
+07:33:53 ready (non-terminating) pods: 1
+07:33:55 ready (non-terminating) pods: 1
+07:33:56 ready (non-terminating) pods: 1
+07:33:58 ready (non-terminating) pods: 1
+07:33:59 ready (non-terminating) pods: 1
+07:34:00 ready (non-terminating) pods: 2
+07:34:00 RESTORED to 2 ready pods after 8 s
+NAME                      READY   STATUS        RESTARTS   AGE
+parser-648bcc7558-c9w5k   1/1     Running       0          7s
+parser-648bcc7558-cpzn2   1/1     Terminating   0          4h53m
+parser-648bcc7558-jjzjs   1/1     Running       0          23s
+07:36:08 done
