@@ -1,0 +1,27 @@
+--- pods right after apply
+NAME                     READY   STATUS    RESTARTS   AGE
+parser-8d6dd8875-dmxxv   0/1     Running   0          3s
+parser-8d6dd8875-r5mqf   0/1     Running   0          3s
+--- endpoints while models load
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME     ENDPOINTS   AGE
+parser               5s
+Waiting for deployment "parser" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "parser" rollout to finish: 1 of 2 updated replicas are available...
+deployment "parser" successfully rolled out
+--- endpoints after ready
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME     ENDPOINTS                         AGE
+parser   10.42.0.17:8000,10.42.0.18:8000   13s
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/parser-8d6dd8875-dmxxv   1/1     Running   0          12s
+pod/parser-8d6dd8875-r5mqf   1/1     Running   0          12s
+
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+service/parser   ClusterIP   10.43.8.252   <none>        80/TCP    13s
+
+NAME                               CLASS     HOSTS   ADDRESS      PORTS   AGE
+ingress.networking.k8s.io/parser   traefik   *       172.20.0.2   80      13s
+
+NAME                                         REFERENCE           TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/parser   Deployment/parser   cpu: <unknown>/70%   1         2         0          13s

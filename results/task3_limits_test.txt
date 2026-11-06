@@ -1,0 +1,5 @@
+container -> SeaweedFS check: HTTP 403
+ready after ~16s
+requests: 50, HTTP 200: 50, median 0.35s, max 0.77s
+peak memory: 379 MiB (limit 1024 MiB, 17 samples)
+OOMKilled: false  RestartCount: 0
