@@ -1,6 +1,6 @@
 # Cloud Computing mini project: distilled command parser (Pythia-70M) on k3d
 
-Name: YOUR NAME    Roll number: YOUR_ROLL_NUMBER
+Name: Shiv Pratap Singh    Roll number: 230101097
 GitHub repo: https://github.com/shiv-pratap04/cloud-kd-project
 
 ## Prerequisites
