@@ -1,10 +1,2 @@
 nohup: ignoring input
-02:35:45 start: 2 ready
-02:36:29 DELETE pod/parser-648bcc7558-4fh6v
-pod "parser-648bcc7558-4fh6v" deleted from app namespace
-02:36:29 ready replicas: 2
-02:36:29 RESTORED after 0 s
-NAME                      READY   STATUS        RESTARTS   AGE
-parser-648bcc7558-4fh6v   1/1     Terminating   0          7m25s
-parser-648bcc7558-w9gfd   1/1     Running       0          7m30s
-02:38:39 done
+07:33:07 start: 1 ready pods
