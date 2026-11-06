@@ -1,0 +1,4 @@
+nohup: ignoring input
+phase 1: idle, waiting for scale-down to 1
+phase 2: load
+phase 3: idle again, waiting for scale-down to 1
