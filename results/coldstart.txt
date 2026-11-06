@@ -1,0 +1,19 @@
+run 1: deleted all pods at 02:40:31
+  parser-648bcc7558-24tkg: creation->Ready 6 s
+  parser-648bcc7558-lbp9s: creation->Ready 6 s
+  run 1 cold-start (slowest pod): 6 s
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+run 2: deleted all pods at 02:40:40
+  parser-648bcc7558-746zf: creation->Ready 6 s
+  parser-648bcc7558-blkm9: creation->Ready 5 s
+  run 2 cold-start (slowest pod): 6 s
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+run 3: deleted all pods at 02:40:46
+  parser-648bcc7558-cpzn2: creation->Ready 6 s
+  parser-648bcc7558-nplff: creation->Ready 6 s
+  run 3 cold-start (slowest pod): 6 s
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+  log: downloaded v1/VERSION.json | downloaded v1/config.json | downloaded v1/generation_config.json | downloaded v1/model.safetensors | downloaded v1/special_tokens_map.json | downloaded v1/tokenizer.json | downloaded v1/tokenizer_config.json | model ready
+runs: [6, 6, 6] s, MEDIAN 6 s
