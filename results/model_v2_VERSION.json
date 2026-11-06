@@ -1,0 +1,12 @@
+{
+  "base_model": "EleutherAI/pythia-70m",
+  "seed": 7,
+  "epochs": 4,
+  "records": 1500,
+  "library_versions": {
+    "torch": "2.4.1",
+    "transformers": "4.44.2",
+    "pyyaml": "6.0.2",
+    "numpy": "1.26.4"
+  }
+}
