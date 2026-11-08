@@ -29,3 +29,9 @@ Docker, k3d, kubectl, curl, gh (for releases), Python 3.12 with `pip install -r 
     python scripts/cost.py 2 1 1 4.587
 
 Evidence for every task is in `results/`; the report is `report/report.pdf`.
+
+## Links
+- GitHub repository: https://github.com/shiv-pratap04/cloud-kd-project
+- Model releases (weights, tokenizer, version info, checksums): https://github.com/shiv-pratap04/cloud-kd-project/releases (tags v1, v2)
+- CI run passing: https://github.com/shiv-pratap04/cloud-kd-project/actions/runs/42182377902
+- CI run failing at the quality gate (untrained model): https://github.com/shiv-pratap04/cloud-kd-project/actions/runs/42182679773
